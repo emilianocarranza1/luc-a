@@ -118,11 +118,22 @@ button:hover {
     <div id="mensajeSecreto">
      Te escribi un poema:
 
+        En tu risa se pierden los laberintos,
+        en tus ojos se apagan atardeceres,
+        en tus manos nace el ingenio,
+        en tus pies se traza el camino,
+        en tu voz, una sinfonía,
+        en tu corazón, un amor,
+        y yo, afortunado de tenerlo.
+
+
+        Te amo, yo más. 
         
 
     </div>
 </div>
 
+<script>
 <script>
 function mostrarMensaje() {
     document.getElementById("mensajeSecreto").style.display = "block";
@@ -144,21 +155,54 @@ function crearCorazon() {
 
 setInterval(crearCorazon, 900);
 
-/* Crear nubes */
-function crearNube() {
-    const nube = document.createElement("div");
-    nube.classList.add("nube");
-    nube.innerHTML = "☁";
-    nube.style.top = Math.random() * 60 + "%";
-    nube.style.animationDuration = (Math.random() * 30 + 20) + "s";
-    document.body.appendChild(nube);
+/* Crear L con nubes */
+function crearLetraL() {
+    const contenedorL = document.createElement("div");
+    contenedorL.style.position = "fixed";
+    contenedorL.style.top = "20%";
+    contenedorL.style.left = "-200px";
+    contenedorL.style.display = "grid";
+    contenedorL.style.gridTemplateColumns = "repeat(5, 40px)";
+    contenedorL.style.gridTemplateRows = "repeat(6, 40px)";
+    contenedorL.style.zIndex = "0";
 
-    setTimeout(() => {
-        nube.remove();
-    }, 50000);
+    // Matriz para dibujar la L
+    const matrizL = [
+        [1,0,0,0,0],
+        [1,0,0,0,0],
+        [1,0,0,0,0],
+        [1,0,0,0,0],
+        [1,0,0,0,0],
+        [1,1,1,1,0],
+    ];
+
+    for (let fila = 0; fila < matrizL.length; fila++) {
+        for (let col = 0; col < matrizL[fila].length; col++) {
+            const celda = document.createElement("div");
+            if (matrizL[fila][col] === 1) {
+                celda.innerHTML = "☁";
+                celda.style.fontSize = "35px";
+                celda.style.opacity = "0.9";
+            }
+            contenedorL.appendChild(celda);
+        }
+    }
+
+    document.body.appendChild(contenedorL);
+
+    let posicion = -200;
+
+    const mover = setInterval(() => {
+        posicion += 0.3; // velocidad (más chico = más lento)
+        contenedorL.style.left = posicion + "px";
+
+        if (posicion > window.innerWidth + 200) {
+            posicion = -200;
+        }
+    }, 10);
 }
 
-setInterval(crearNube, 4000);
+crearLetraL();
 </script>
 
 </body>

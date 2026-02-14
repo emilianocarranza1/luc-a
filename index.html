@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para vos ❤️</title>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+.contenedor {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 30px;
+}
+
+h1 {
+    font-size: 3em;
+    animation: fadeIn 3s ease-in-out;
+}
+
+p {
+    font-size: 1.3em;
+    max-width: 600px;
+    margin: auto;
+    line-height: 1.6;
+    animation: fadeIn 5s ease-in-out;
+}
+
+button {
+    margin-top: 30px;
+    padding: 12px 25px;
+    font-size: 1em;
+    border: none;
+    border-radius: 25px;
+    background-color: #ff4b7d;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #ff1f5a;
+    transform: scale(1.05);
+}
+
+#mensajeSecreto {
+    display: none;
+    margin-top: 25px;
+    font-size: 1.2em;
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.corazon {
+    position: fixed;
+    color: #ff4b7d;
+    animation: flotar 6s linear infinite;
+}
+
+@keyframes flotar {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="contenedor">
+    <h1>Para vos</h1>
+    <p>
+        Nunca imaginé que algo tan simple pudiera convertirse en algo tan importante para mí.
+        Entre millones de personas, el destino decidió cruzarnos,
+        y desde ese momento todo empezó a sentirse diferente.
+        <br><br>
+        Esta página existe solo para recordarte algo:
+        sos especial. Mucho más de lo que creés.
+    </p>
+
+    <button onclick="mostrarMensaje()">Haz click si confías en mí ❤️</button>
+
+    <div id="mensajeSecreto">
+        Prometo cuidar lo que estamos construyendo,
+        respetarlo y valorarlo.
+        Y pase lo que pase,
+        siempre voy a agradecer haberte conocido.
+    </div>
+</div>
+
+<script>
+function mostrarMensaje() {
+    document.getElementById("mensajeSecreto").style.display = "block";
+}
+
+function crearCorazon() {
+    const corazon = document.createElement("div");
+    corazon.classList.add("corazon");
+    corazon.innerHTML = "❤";
+    corazon.style.left = Math.random() * 100 + "vw";
+    corazon.style.fontSize = Math.random() * 20 + 10 + "px";
+    document.body.appendChild(corazon);
+
+    setTimeout(() => {
+        corazon.remove();
+    }, 6000);
+}
+
+setInterval(crearCorazon, 500);
+</script>
+
+</body>
+</html>

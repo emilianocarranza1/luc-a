@@ -10,18 +10,21 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+    background: linear-gradient(to bottom, #aee1ff, #d6f1ff);
     font-family: 'Segoe UI', sans-serif;
-    color: white;
+    color: #2c3e50;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    overflow: hidden;
 }
 
 .contenedor {
     max-width: 700px;
     padding: 40px 20px;
+    position: relative;
+    z-index: 2;
 }
 
 h1 {
@@ -42,14 +45,13 @@ button {
     font-size: 1em;
     border: none;
     border-radius: 30px;
-    background-color: #ff4b7d;
-    color: white;
+    background-color: white;
+    color: #2c3e50;
     cursor: pointer;
     transition: 0.3s;
 }
 
 button:hover {
-    background-color: #ff1f5a;
     transform: scale(1.05);
 }
 
@@ -60,21 +62,39 @@ button:hover {
     animation: fadeIn 1.5s ease-in-out;
 }
 
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
+/* Corazones blancos */
 .corazon {
     position: fixed;
     bottom: -10px;
-    color: #ff4b7d;
-    animation: flotar 6s linear forwards;
+    color: white;
+    animation: flotar 8s linear forwards;
+    z-index: 1;
+}
+
+/* Nubes */
+.nube {
+    position: fixed;
+    top: 20%;
+    font-size: 60px;
+    color: white;
+    opacity: 0.8;
+    animation: moverNube linear infinite;
+    z-index: 0;
 }
 
 @keyframes flotar {
     0% { transform: translateY(0); opacity: 1; }
     100% { transform: translateY(-110vh); opacity: 0; }
+}
+
+@keyframes moverNube {
+    0% { transform: translateX(-200px); }
+    100% { transform: translateX(110vw); }
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
 </style>
 </head>
@@ -84,9 +104,10 @@ button:hover {
 <div class="contenedor">
     <h1>Para mi Lucía</h1>
     <p>
-        Te amo mucho, espero que en algun momento de nuestras vidas 
+       Te amo mucho, espero que en algun momento de nuestras vidas 
         podamos encontrarnos y hacerte la mujer mas feliz 
         que alguna vez existio.
+
         <br><br>
         Esta pagina la hice con mi diminuto conocimiento
         pero espero que te guste.
@@ -95,7 +116,10 @@ button:hover {
     <button onclick="mostrarMensaje()">El que aprieta es gay❤️</button>
 
     <div id="mensajeSecreto">
-       TE AMO CON TODO MI SER
+     Te escribi un poema:
+
+        
+
     </div>
 </div>
 
@@ -104,20 +128,37 @@ function mostrarMensaje() {
     document.getElementById("mensajeSecreto").style.display = "block";
 }
 
+/* Corazones flotando */
 function crearCorazon() {
     const corazon = document.createElement("div");
     corazon.classList.add("corazon");
     corazon.innerHTML = "❤";
     corazon.style.left = Math.random() * 100 + "vw";
-    corazon.style.fontSize = Math.random() * 20 + 10 + "px";
+    corazon.style.fontSize = Math.random() * 25 + 15 + "px";
     document.body.appendChild(corazon);
 
     setTimeout(() => {
         corazon.remove();
-    }, 6000);
+    }, 8000);
 }
 
-setInterval(crearCorazon, 700);
+setInterval(crearCorazon, 900);
+
+/* Crear nubes */
+function crearNube() {
+    const nube = document.createElement("div");
+    nube.classList.add("nube");
+    nube.innerHTML = "☁";
+    nube.style.top = Math.random() * 60 + "%";
+    nube.style.animationDuration = (Math.random() * 30 + 20) + "s";
+    document.body.appendChild(nube);
+
+    setTimeout(() => {
+        nube.remove();
+    }, 50000);
+}
+
+setInterval(crearNube, 4000);
 </script>
 
 </body>

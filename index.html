@@ -60,8 +60,12 @@ button:hover {
     margin-top: 25px;
     font-size: 1.2em;
     animation: fadeIn 1.5s ease-in-out;
+}
+
+#mensajeSecreto p {
     white-space: pre-line;
 }
+
 
 /* Corazones blancos */
 .corazon {
@@ -116,30 +120,26 @@ button:hover {
 
     <button onclick="mostrarMensaje()">El que aprieta es gay❤️</button>
 
-    <div id="mensajeSecreto">
-     Te escribi un poema:
+   <div id="mensajeSecreto">
+    <p>
+Te escribí un poema:
 
-        En tu risa se pierden los laberintos,
-        en tus ojos se apagan atardeceres,
-        en tus manos nace el ingenio,
-        en tus pies se traza el camino,
-        en tu voz, una sinfonía,
-        en tu corazón, un amor,
-        y yo, afortunado de tenerlo.
+En tu risa se pierden los laberintos,
+en tus ojos se apagan atardeceres,
+en tus manos nace el ingenio,
+en tus pies se traza el camino,
+en tu voz, una sinfonía,
+en tu corazón, un amor,
+y yo, afortunado de tenerlo.
 
+Te amo, yo más.
+    </p>
 
-        Te amo, yo más. 
-
-
-        <br><br>
-
-<div style="margin-top:20px;">
     <button onclick="reproducirAudio()">▶ Un temazo pa descomprimir</button>
+
+    <audio id="miAudio" src="cancion.mp3"></audio>
 </div>
 
-<audio id="miAudio" src="cancion.mp3"></audio>
-
-    </div>
 </div>
 
 <script>
